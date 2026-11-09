@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123b75">
+<meta name="description" content="ระบบบันทึกค่าน้ำมันและซ่อมบำรุงรถยนต์ ขต 199 ระยอง">
+<link rel="manifest" href="manifest.webmanifest">
+<title>รถของฉัน | ขต 199 ระยอง</title>
+<style>
+:root{--navy:#123b75;--blue:#2563eb;--sky:#eaf2ff;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--bg:#f3f6fb;--green:#15803d;--amber:#b45309;--red:#be123c;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#123b75,#1d5eb5);color:white;padding:22px 16px 18px;box-shadow:0 5px 20px #123b7526}
+.wrap{max-width:760px;margin:auto;padding:0 14px}.head{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.caricon{width:46px;height:46px;border-radius:15px;background:#ffffff20;display:grid;place-items:center;font-size:25px}.brand h1{font-size:19px;margin:0}.brand p{font-size:12px;color:#dbeafe;margin:4px 0 0}
+button,.btn{border:0;border-radius:12px;padding:11px 14px;font:inherit;font-weight:650;cursor:pointer}.install{background:#facc15;color:#172033;font-size:12px;padding:9px 11px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;background:white;padding:6px;border:1px solid var(--line);border-radius:15px;margin:16px 0}.tab{background:transparent;color:#526078;padding:10px 5px;font-size:13px}.tab.active{background:var(--blue);color:white;box-shadow:0 3px 9px #2563eb35}
+main{max-width:760px;margin:auto;padding:0 14px}.panel{display:none}.panel.active{display:block}.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:0 0 13px;box-shadow:0 3px 12px #17203308}.card h2{font-size:15px;margin:0 0 13px}.muted{color:var(--muted)}.small{font-size:12px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px}.stat span{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:20px;margin-top:5px}.stat em{font-size:11px;font-style:normal;color:var(--muted)}
+form{display:grid;gap:11px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field label{display:block;font-size:12px;font-weight:650;color:#475569;margin:0 0 5px}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd5e1;border-radius:11px;padding:11px 10px;font:inherit;font-size:14px;background:white;color:var(--ink);min-width:0}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #93c5fd;border-color:var(--blue)}.primary{background:var(--blue);color:white;width:100%;padding:12px}.secondary{background:#eaf2ff;color:#1d4ed8}.danger{background:#fff1f2;color:var(--red)}.success{background:#dcfce7;color:var(--green)}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap}.toolbar h2{margin:0}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{font-size:11px;padding:8px 10px}
+.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12px;min-width:490px}th,td{padding:10px 8px;border-bottom:1px solid #edf1f6;text-align:left;vertical-align:top}th{background:#f8fafc;color:#64748b;font-weight:700}td .sub{display:block;color:#94a3b8;font-size:10px;margin-top:3px}.rowbtn{padding:6px 8px;font-size:11px;margin:1px}.empty{text-align:center;padding:24px;color:#94a3b8;font-size:13px}
+.notice{padding:11px 12px;border-radius:12px;background:#eff6ff;color:#1e40af;font-size:12px;line-height:1.55;margin-top:10px}.alerts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.alert{padding:11px;border:1px solid;border-radius:13px;font-size:12px}.alert b{display:block;margin-bottom:5px}.ok{background:#f0fdf4;color:#166534;border-color:#bbf7d0}.soon{background:#fffbeb;color:#92400e;border-color:#fde68a}.late{background:#fff1f2;color:#9f1239;border-color:#fecdd3}.unknown{background:#f8fafc;color:#64748b;border-color:#e2e8f0}
+.chartbox{height:230px;position:relative}.chartbox canvas{width:100%;height:100%}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:8px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.checkline{display:flex;gap:8px;align-items:center;font-size:13px}.checkline input{width:18px;height:18px;accent-color:var(--blue)}
+footer{text-align:center;color:#94a3b8;font-size:11px;padding:16px}.hidden{display:none!important}
+@media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr)}.brand h1{font-size:21px}}
+</style>
+</head>
+<body>
+<header><div class="wrap head"><div class="brand"><div class="caricon">🚙</div><div><h1>บันทึกข้อมูลรถยนต์</h1><p>ทะเบียน ขต 199 ระยอง · สมุดประจำรถ</p></div></div><button id="installBtn" class="install hidden">＋ ติดตั้งแอป</button></div></header>
+<main>
+<nav class="tabs" aria-label="เมนูหลัก">
+<button class="tab active" data-tab="dashboard">ภาพรวม</button><button class="tab" data-tab="fuel">ค่าน้ำมัน</button><button class="tab" data-tab="maint">ซ่อมบำรุง</button>
+</nav>
+<section id="dashboard" class="panel active">
+<div class="card"><h2>สรุปค่าใช้จ่ายรถยนต์</h2><div class="stats">
+<div class="stat"><span>ค่าน้ำมันสะสม</span><strong id="sumFuel">฿0</strong><em id="fuelCount">0 รายการ</em></div>
+<div class="stat"><span>ค่าซ่อมบำรุงสะสม</span><strong id="sumMaint">฿0</strong><em id="maintCount">0 รายการ</em></div>
+<div class="stat"><span>ค่าใช้จ่ายรวม</span><strong id="sumAll">฿0</strong><em>น้ำมัน + ซ่อมบำรุง</em></div>
+<div class="stat"><span>เลขไมล์ล่าสุด</span><strong id="lastOdo">-</strong><em>กิโลเมตร</em></div>
+</div></div>
+<div class="card"><h2>ค่าใช้จ่ายรายเดือน (6 เดือนล่าสุด)</h2><div class="chartbox"><canvas id="costChart" aria-label="กราฟค่าใช้จ่ายรายเดือน"></canvas></div><div class="legend"><span><i class="dot" style="background:#2563eb"></i>น้ำมัน</span><span><i class="dot" style="background:#f59e0b"></i>ซ่อมบำรุง</span></div></div>
+<div class="card"><h2>อัตราสิ้นเปลืองน้ำมัน</h2><div class="stats"><div class="stat"><span>เฉลี่ย (กม./ลิตร)</span><strong id="avgKmL">-</strong><em>จากรายการเติมน้ำมันต่อเนื่อง</em></div><div class="stat"><span>ค่าใช้จ่ายน้ำมัน/กม.</span><strong id="costKm">-</strong><em>บาทต่อกิโลเมตร</em></div></div><div class="notice">การคำนวณ กม./ลิตร ใช้ได้แม่นยำเมื่อบันทึกการเติมน้ำมันแบบเต็มถังทุกครั้ง และเปิดเลือก “เติมเต็มถัง” ในรายการนั้น ระบบจะคำนวณระยะทางจากการเติมเต็มถังครั้งก่อน</div></div>
+<div class="card"><h2>สถานะบำรุงรักษา</h2><div id="dashAlerts" class="alerts"></div></div>
+<div class="card"><h2>สำรองข้อมูลและจัดการ</h2><div class="actions"><button class="secondary" id="backupBtn">ดาวน์โหลดสำรองข้อมูล</button><button class="secondary" id="restoreBtn">นำเข้าข้อมูลสำรอง</button><button class="danger" id="wipeBtn">ล้างข้อมูลทั้งหมด</button><input type="file" id="restoreFile" accept=".json,application/json" class="hidden"></div><div class="notice">ข้อมูลเก็บไว้ในเบราว์เซอร์ของอุปกรณ์นี้ ควรดาวน์โหลดไฟล์สำรองเป็นระยะ และก่อนเปลี่ยนเครื่องหรือล้างข้อมูลเว็บไซต์</div></div>
+</section>
+<section id="fuel" class="panel">
+<div class="card"><h2 id="fuelFormTitle">＋ บันทึกการเติมน้ำมัน</h2><form id="fuelForm">
+<div class="grid2"><div class="field"><label>วันที่</label><input type="date" id="fDate" required></div><div class="field"><label>เลขไมล์ (กม.)</label><input type="number" id="fOdo" min="0" step="1" placeholder="เช่น 120500" required></div></div>
+<div class="field"><label>ประเภทน้ำมัน</label><select id="fType"><option>แก๊สโซฮอล์ 95</option><option>แก๊สโซฮอล์ 91</option><option>E20</option><option>ดีเซล</option><option>อื่นๆ</option></select></div>
+<div class="grid2"><div class="field"><label>จำนวนเงิน (บาท)</label><input type="number" id="fAmount" min="0.01" step="0.01" required></div><div class="field"><label>จำนวนลิตร</label><input type="number" id="fLiters" min="0.01" step="0.01" required></div></div>
+<label class="checkline"><input type="checkbox" id="fFull"> เติมน้ำมันเต็มถัง</label>
+<div class="field"><label>หมายเหตุ (ไม่บังคับ)</label><input id="fNote" maxlength="200" placeholder="เช่น สถานีบริการ / รายละเอียด"></div>
+<button class="primary" type="submit" id="fuelSubmit">บันทึกค่าน้ำมัน</button><button class="secondary hidden" type="button" id="fuelCancel">ยกเลิกการแก้ไข</button></form></div>
+<div class="card"><div class="toolbar"><h2>ประวัติการเติมน้ำมัน</h2><div class="actions"><button class="secondary" id="fuelCsv">ส่งออก CSV</button></div></div><div class="tablewrap"><table><thead><tr><th>วันที่ / เลขไมล์</th><th>ชนิด / ลิตร</th><th>เต็มถัง</th><th>บาท</th><th>จัดการ</th></tr></thead><tbody id="fuelRows"></tbody></table></div></div>
+</section>
+<section id="maint" class="panel">
+<div class="card"><h2>สถานะการเช็กระยะถัดไป</h2><p class="small muted" id="maintOdo">เลขไมล์ล่าสุด: -</p><div id="maintAlerts" class="alerts"></div></div>
+<div class="card"><h2 id="maintFormTitle">＋ เพิ่มประวัติซ่อมบำรุง</h2><form id="maintForm">
+<div class="grid2"><div class="field"><label>วันที่</label><input type="date" id="mDate" required></div><div class="field"><label>เลขไมล์ (กม.)</label><input type="number" id="mOdo" min="0" step="1" required></div></div>
+<div class="field"><label>รายการซ่อมบำรุง</label><select id="mType"><option value="น้ำมันเครื่อง">เปลี่ยนถ่ายน้ำมันเครื่อง</option><option value="กรองอากาศ">เปลี่ยนไส้กรองอากาศ</option><option value="กรองโซล่า">เปลี่ยนไส้กรองโซล่า/เชื้อเพลิง</option><option value="น้ำมันเกียร์">เปลี่ยนน้ำมันเกียร์ / เฟืองท้าย</option><option value="ยางรถยนต์">สลับยาง / ถ่วงล้อ / ตั้งศูนย์</option><option value="ระบบเบรก">ระบบเบรก</option><option value="แบตเตอรี่">เปลี่ยนแบตเตอรี่</option><option value="อื่นๆ">อื่นๆ</option></select></div>
+<div class="grid2"><div class="field"><label>ค่าใช้จ่าย (บาท)</label><input type="number" id="mCost" min="0" step="0.01" required></div><div class="field"><label>อู่ / สถานที่</label><input id="mShop" maxlength="120" placeholder="เช่น ศูนย์บริการ"></div></div>
+<div class="field"><label>หมายเหตุ</label><input id="mNote" maxlength="250" placeholder="รายละเอียดเพิ่มเติม"></div>
+<button class="primary" type="submit" id="maintSubmit">บันทึกซ่อมบำรุง</button><button class="secondary hidden" type="button" id="maintCancel">ยกเลิกการแก้ไข</button></form></div>
+<div class="card"><div class="toolbar"><h2>ประวัติการซ่อมบำรุง</h2><div class="actions"><button class="secondary" id="maintCsv">ส่งออก CSV</button></div></div><div class="tablewrap"><table><thead><tr><th>วันที่ / เลขไมล์</th><th>รายการ / สถานที่</th><th>บาท</th><th>จัดการ</th></tr></thead><tbody id="maintRows"></tbody></table></div></div>
+</section>
+</main>
+<footer>สมุดประจำรถ ขต 199 ระยอง · เวอร์ชัน 2.0 · ข้อมูลจัดเก็บในอุปกรณ์นี้</footer>
+<script>
+const KEY='car199_v2';
+const RULES={'น้ำมันเครื่อง':10000,'กรองอากาศ':20000,'กรองโซล่า':20000,'แบตเตอรี่':40000};
+let db={fuel:[],maint:[]}, editFuel=null, editMaint=null, deferredPrompt=null;
+const $=id=>document.getElementById(id);
+const num=v=>Number(v)||0, money=v=>'฿'+num(v).toLocaleString('th-TH',{maximumFractionDigits:2}), fmt=v=>num(v).toLocaleString('th-TH');
+const today=()=>new Date().toISOString().slice(0,10);
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');db={fuel:Array.isArray(x.fuel)?x.fuel:[],maint:Array.isArray(x.maint)?x.maint:[]}}catch{db={fuel:[],maint:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function latestOdo(){return Math.max(0,...db.fuel.map(x=>num(x.odo)),...db.maint.map(x=>num(x.odo)))}
+function sortByDate(a,b){return (b.date||'').localeCompare(a.date||'')||num(b.odo)-num(a.odo)}
+function tab(name){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===name))}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.tab)));
+$('fDate').value=today();$('mDate').value=today();
+function resetFuel(){editFuel=null;$('fuelForm').reset();$('fDate').value=today();$('fuelFormTitle').textContent='＋ บันทึกการเติมน้ำมัน';$('fuelSubmit').textContent='บันทึกค่าน้ำมัน';$('fuelCancel').classList.add('hidden')}
+function resetMaint(){editMaint=null;$('maintForm').reset();$('mDate').value=today();$('maintFormTitle').textContent='＋ เพิ่มประวัติซ่อมบำรุง';$('maintSubmit').textContent='บันทึกซ่อมบำรุง';$('maintCancel').classList.add('hidden')}
+$('fuelCancel').onclick=resetFuel;$('maintCancel').onclick=resetMaint;
+$('fuelForm').onsubmit=e=>{e.preventDefault();const r={id:editFuel||crypto.randomUUID(),date:$('fDate').value,odo:num($('fOdo').value),type:$('fType').value,amount:num($('fAmount').value),liters:num($('fLiters').value),full:$('fFull').checked,note:$('fNote').value};if(!validOdo(r.odo,'fuel',editFuel))return; if(editFuel){db.fuel=db.fuel.map(x=>x.id===editFuel?r:x)}else db.fuel.push(r);resetFuel();save();};
+$('maintForm').onsubmit=e=>{e.preventDefault();const r={id:editMaint||crypto.randomUUID(),date:$('mDate').value,odo:num($('mOdo').value),type:$('mType').value,cost:num($('mCost').value),shop:$('mShop').value,note:$('mNote').value};if(!validOdo(r.odo,'maint',editMaint))return;if(editMaint)db.maint=db.maint.map(x=>x.id===editMaint?r:x);else db.maint.push(r);resetMaint();save();};
+function validOdo(odo,kind,id){const all=[...db.fuel.filter(x=>!(kind==='fuel'&&x.id===id)),...db.maint.filter(x=>!(kind==='maint'&&x.id===id))];const max=Math.max(0,...all.map(x=>num(x.odo)));if(odo<max){return confirm('เลขไมล์นี้น้อยกว่ารายการเดิมที่บันทึกไว้ ('+fmt(max)+' กม.) ต้องการบันทึกต่อหรือไม่?')}return true}
+function edit(kind,id){const r=db[kind].find(x=>x.id===id);if(!r)return;if(kind==='fuel'){editFuel=id;$('fDate').value=r.date;$('fOdo').value=r.odo;$('fType').value=r.type;$('fAmount').value=r.amount;$('fLiters').value=r.liters;$('fFull').checked=!!r.full;$('fNote').value=r.note||'';$('fuelFormTitle').textContent='แก้ไขรายการเติมน้ำมัน';$('fuelSubmit').textContent='บันทึกการแก้ไข';$('fuelCancel').classList.remove('hidden');tab('fuel')}else{editMaint=id;$('mDate').value=r.date;$('mOdo').value=r.odo;$('mType').value=r.type;$('mCost').value=r.cost;$('mShop').value=r.shop||'';$('mNote').value=r.note||'';$('maintFormTitle').textContent='แก้ไขประวัติซ่อมบำรุง';$('maintSubmit').textContent='บันทึกการแก้ไข';$('maintCancel').classList.remove('hidden');tab('maint')}window.scrollTo({top:0,behavior:'smooth'})}
+function del(kind,id){if(!confirm('ยืนยันลบรายการนี้?'))return;db[kind]=db[kind].filter(x=>x.id!==id);save()}
+function rows(){const fr=[...db.fuel].sort(sortByDate),mr=[...db.maint].sort(sortByDate);$('fuelRows').innerHTML=fr.length?fr.map(r=>`<tr><td>${safe(r.date)}<span class="sub">${fmt(r.odo)} กม.</span></td><td>${safe(r.type)}<span class="sub">${num(r.liters).toFixed(2)} ลิตร</span></td><td>${r.full?'เต็มถัง':'-'}</td><td>${money(r.amount)}</td><td><button class="rowbtn secondary" onclick="edit('fuel','${r.id}')">แก้ไข</button><button class="rowbtn danger" onclick="del('fuel','${r.id}')">ลบ</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">ยังไม่มีประวัติการเติมน้ำมัน</td></tr>';
+$('maintRows').innerHTML=mr.length?mr.map(r=>`<tr><td>${safe(r.date)}<span class="sub">${fmt(r.odo)} กม.</span></td><td>${safe(r.type)}<span class="sub">${safe(r.shop||'')}${r.note?' · '+safe(r.note):''}</span></td><td>${money(r.cost)}</td><td><button class="rowbtn secondary" onclick="edit('maint','${r.id}')">แก้ไข</button><button class="rowbtn danger" onclick="del('maint','${r.id}')">ลบ</button></td></tr>`).join(''):'<tr><td colspan="4" class="empty">ยังไม่มีประวัติซ่อมบำรุง</td></tr>'}
+function alerts(){const odo=latestOdo();$('maintOdo').textContent='เลขไมล์ล่าสุด: '+(odo?fmt(odo)+' กม.':'-');const keys=Object.keys(RULES);const html=keys.map(k=>{const last=db.maint.filter(r=>r.type===k).sort((a,b)=>num(b.odo)-num(a.odo))[0];if(!last)return `<div class="alert unknown"><b>${k}</b>ยังไม่มีประวัติ</div>`;const next=num(last.odo)+RULES[k],rem=next-odo,cl=rem<=0?'late':rem<=1000?'soon':'ok',st=rem<=0?'เลยกำหนด':rem<=1000?'ใกล้ถึงกำหนด':'ปกติ';return `<div class="alert ${cl}"><b>${k} · ${st}</b>ครั้งถัดไป ${fmt(next)} กม.<br>เหลือ ${rem>=0?fmt(rem):'เลย '+fmt(-rem)} กม.</div>`}).join('');$('maintAlerts').innerHTML=html||'<div class="alert unknown">ยังไม่มีข้อมูล</div>';$('dashAlerts').innerHTML=html}
+function consumption(){const all=[...db.fuel].sort((a,b)=>num(a.odo)-num(b.odo));const full=all.filter(x=>x.full);let dist=0,lit=0,intervalCost=0;for(let i=1;i<full.length;i++){const start=num(full[i-1].odo),end=num(full[i].odo),d=end-start;if(d<=0)continue;const segment=all.filter(x=>num(x.odo)>start&&num(x.odo)<=end);const segmentLit=segment.reduce((s,x)=>s+num(x.liters),0),segmentCost=segment.reduce((s,x)=>s+num(x.amount),0);if(segmentLit>0){dist+=d;lit+=segmentLit;intervalCost+=segmentCost}}$('avgKmL').textContent=lit?(dist/lit).toFixed(2):'-';$('costKm').textContent=dist>0?money(intervalCost/dist):'-'}
+function summary(){const sf=db.fuel.reduce((s,x)=>s+num(x.amount),0),sm=db.maint.reduce((s,x)=>s+num(x.cost),0),odo=latestOdo();$('sumFuel').textContent=money(sf);$('sumMaint').textContent=money(sm);$('sumAll').textContent=money(sf+sm);$('fuelCount').textContent=db.fuel.length+' รายการ';$('maintCount').textContent=db.maint.length+' รายการ';$('lastOdo').textContent=odo?fmt(odo):'-';}
+function chart(){const c=$('costChart'),rect=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=rect.width*dpr;c.height=rect.height*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);const w=rect.width,h=rect.height,p={l:42,r:8,t:12,b:32},cw=w-p.l-p.r,ch=h-p.t-p.b;ctx.clearRect(0,0,w,h);const months=[];const now=new Date();for(let i=5;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({key:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),label:d.toLocaleDateString('th-TH',{month:'short'})})}const vals=months.map(m=>({f:db.fuel.filter(x=>(x.date||'').slice(0,7)===m.key).reduce((s,x)=>s+num(x.amount),0),m:db.maint.filter(x=>(x.date||'').slice(0,7)===m.key).reduce((s,x)=>s+num(x.cost),0)}));const max=Math.max(100,...vals.map(v=>v.f+v.m));ctx.font='10px system-ui';ctx.fillStyle='#94a3b8';ctx.strokeStyle='#e8edf4';for(let i=0;i<=4;i++){const y=p.t+ch*i/4;ctx.beginPath();ctx.moveTo(p.l,y);ctx.lineTo(w-p.r,y);ctx.stroke();ctx.fillText(Math.round(max*(4-i)/4).toLocaleString('th-TH'),2,y+3)}const group=cw/6,bw=Math.min(24,group*.27);vals.forEach((v,i)=>{const x=p.l+group*i+group/2;const hf=v.f/max*ch,hm=v.m/max*ch;ctx.fillStyle='#2563eb';ctx.fillRect(x-bw-1,p.t+ch-hf,bw,hf);ctx.fillStyle='#f59e0b';ctx.fillRect(x+1,p.t+ch-hm,bw,hm);ctx.fillStyle='#64748b';ctx.textAlign='center';ctx.fillText(months[i].label,x,h-8)});ctx.textAlign='left'}
+function renderAll(){rows();summary();alerts();consumption();chart()}
+function csv(kind){const arr=db[kind];if(!arr.length){alert('ไม่มีข้อมูลสำหรับส่งออก');return}const fields=kind==='fuel'?['date','odo','type','amount','liters','full','note']:['date','odo','type','cost','shop','note'];const head=kind==='fuel'?['วันที่','เลขไมล์','ประเภทน้ำมัน','จำนวนเงิน','ลิตร','เต็มถัง','หมายเหตุ']:['วันที่','เลขไมล์','รายการ','ค่าใช้จ่าย','สถานที่','หมายเหตุ'];const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const content='\ufeff'+head.map(q).join(',')+'\n'+arr.map(r=>fields.map(k=>q(r[k])).join(',')).join('\n');download(content,kind+'_ขต199.csv','text/csv;charset=utf-8')}
+function download(data,name,type){const blob=new Blob([data],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('fuelCsv').onclick=()=>csv('fuel');$('maintCsv').onclick=()=>csv('maint');
+$('backupBtn').onclick=()=>download(JSON.stringify({app:'car199',version:2,exportedAt:new Date().toISOString(),...db},null,2),'backup_ขต199_'+today()+'.json','application/json');
+$('restoreBtn').onclick=()=>$('restoreFile').click();
+$('restoreFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const x=JSON.parse(await file.text());if(!Array.isArray(x.fuel)||!Array.isArray(x.maint))throw Error('รูปแบบไฟล์ไม่ถูกต้อง');if(!confirm('นำเข้าข้อมูล '+x.fuel.length+' รายการน้ำมัน และ '+x.maint.length+' รายการซ่อมบำรุง? ข้อมูลปัจจุบันจะถูกแทนที่'))return;db={fuel:x.fuel,maint:x.maint};save();alert('นำเข้าข้อมูลสำเร็จ')}catch(err){alert('ไม่สามารถนำเข้าไฟล์ได้: '+err.message)}e.target.value=''};
+$('wipeBtn').onclick=()=>{if(confirm('ลบประวัติทั้งหมดของรถคันนี้จากอุปกรณ์นี้? แนะนำให้สำรองข้อมูลก่อน')){db={fuel:[],maint:[]};save();resetFuel();resetMaint()}};
+window.addEventListener('resize',()=>{if($('dashboard').classList.contains('active'))chart()});
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').classList.remove('hidden')});
+$('installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('installBtn').classList.add('hidden')}else alert('บน iPhone: เปิดเมนูแชร์ใน Safari แล้วเลือก “เพิ่มไปยังหน้าจอโฮม”')};
+load();renderAll();
+</script>
+</body></html>
